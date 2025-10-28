@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/feature/add_building/ui/screen/add_building.dart';
 import 'package:revo/feature/home_screen/ui/screen/home_screen.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -11,7 +12,6 @@ class BaseScreen extends StatefulWidget {
 class _BaseScreenState extends State<BaseScreen> {
   int _currentIndex = 0;
 
-  
   final List<BottomNavigationItem> _navigationItems = [
     BottomNavigationItem(
       icon: Icons.home,
@@ -29,7 +29,7 @@ class _BaseScreenState extends State<BaseScreen> {
       icon: Icons.add_circle_outline,
       activeIcon: Icons.add_circle,
       label: 'إضافة',
-      page: const HomeScreen(),
+      page: const AddBuilding(),
     ),
     BottomNavigationItem(
       icon: Icons.notifications_none,
@@ -54,10 +54,7 @@ class _BaseScreenState extends State<BaseScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       body: _navigationItems[_currentIndex].page,
-
-      
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           boxShadow: [
@@ -89,7 +86,6 @@ class _BaseScreenState extends State<BaseScreen> {
     );
   }
 }
-
 
 class BottomNavigationItem {
   final IconData icon;

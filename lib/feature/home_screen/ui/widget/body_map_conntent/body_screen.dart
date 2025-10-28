@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/feature/home_screen/ui/widget/body_map_conntent/product_item.dart';
 import 'package:revo/feature/home_screen/ui/widget/category_and_show.dart';
 
 class BodyScreen extends StatefulWidget {
@@ -16,20 +17,15 @@ class _BodyScreenState extends State<BodyScreen> {
         child: Column(
           children: [
             CategoryShowAll(categoryTitle: "الفئات"),
-            SizedBox(height: 20),
-            Container(height: 200, color: Colors.blueAccent),
+            ProductItem(),
             CategoryShowAll(categoryTitle: "الفئات"),
-            SizedBox(height: 20),
-            Container(height: 200, color: Colors.blueAccent),
+            ProductItem(),
             CategoryShowAll(categoryTitle: "الفئات"),
-            SizedBox(height: 20),
-            Container(height: 200, color: Colors.blueAccent),
+            ProductItem(),
             CategoryShowAll(categoryTitle: "الفئات"),
-            SizedBox(height: 20),
-            Container(height: 200, color: Colors.blueAccent),
+            ProductItem(),
             CategoryShowAll(categoryTitle: "الفئات"),
-            SizedBox(height: 20),
-            Container(height: 200, color: Colors.blueAccent),
+            ProductItem(),
           ],
         ),
       ),
