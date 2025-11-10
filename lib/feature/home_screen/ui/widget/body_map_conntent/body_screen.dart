@@ -16,15 +16,10 @@ class _BodyScreenState extends State<BodyScreen> {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            CategoryShowAll(categoryTitle: "الفئات"),
             ProductItem(),
-            CategoryShowAll(categoryTitle: "الفئات"),
             ProductItem(),
-            CategoryShowAll(categoryTitle: "الفئات"),
             ProductItem(),
-            CategoryShowAll(categoryTitle: "الفئات"),
             ProductItem(),
-            CategoryShowAll(categoryTitle: "الفئات"),
             ProductItem(),
           ],
         ),

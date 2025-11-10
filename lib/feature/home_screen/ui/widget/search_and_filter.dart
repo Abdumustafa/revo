@@ -22,98 +22,102 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16,),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-              hintText: 'Search...',
-              hintStyle: TextStyle(
-                color: Colors.grey[500],
-                fontSize: 12,
-              ),
-              prefixIcon: Icon(
-                Icons.search,
-                color: Colors.grey[700],
-                size: 20,
-              ),
-              filled: true,
-              fillColor: Colors.grey[100],
-              contentPadding:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: Colors.grey.shade300, width: 0.5),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(15),
-                borderSide: BorderSide(color: Colors.blueAccent, width: 0.5),
+    return Container(
+      width: double.infinity,
+      color: Color(0xff3DB379),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 14,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: 'ابحث عن عقار',
+                hintStyle: TextStyle(
+                  color: Colors.grey[500],
+                  fontSize: 12,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.grey[700],
+                  size: 20,
+                ),
+                filled: true,
+                fillColor: Colors.grey[100],
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide:
+                      BorderSide(color: Colors.grey.shade300, width: 0.5),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  borderSide: BorderSide(color: Colors.blueAccent, width: 0.5),
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 12),
-
-          // 🏠 زرّين شراء / إيجار
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildToggleButton(
-                title: 'شراء',
-                isSelected: isBuySelected,
-                onTap: () {
-                  setState(() {
-                    isBuySelected = true;
-                  });
-                },
-              ),
-              const SizedBox(width: 10),
-              _buildToggleButton(
-                title: 'إيجار',
-                isSelected: !isBuySelected,
-                onTap: () {
-                  setState(() {
-                    isBuySelected = false;
-                  });
-                },
-              ),
-            ],
-          ),
-
-          const SizedBox(height: 10),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: List.generate(filters.length, (index) {
-                bool isSelected = selectedFilter == index;
-                return Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: ChoiceChip(
-                    label: Text(
-                      filters[index],
-                      style: TextStyle(
-                        color: isSelected ? Colors.white : Colors.grey[800],
-                        fontWeight:
-                            isSelected ? FontWeight.bold : FontWeight.normal,
+            const SizedBox(height: 12),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildToggleButton(
+                  title: 'شراء',
+                  isSelected: isBuySelected,
+                  onTap: () {
+                    setState(() {
+                      isBuySelected = true;
+                    });
+                  },
+                ),
+                const SizedBox(width: 10),
+                _buildToggleButton(
+                  title: 'إيجار',
+                  isSelected: !isBuySelected,
+                  onTap: () {
+                    setState(() {
+                      isBuySelected = false;
+                    });
+                  },
+                ),
+              ],
+            ),
+            const SizedBox(height: 10),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: List.generate(filters.length, (index) {
+                  bool isSelected = selectedFilter == index;
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 8),
+                    child: ChoiceChip(
+                      showCheckmark: false,
+                      label: Text(
+                        filters[index],
+                        style: TextStyle(
+                          color: isSelected ? Colors.white : Colors.grey[800],
+                          fontWeight:
+                              isSelected ? FontWeight.bold : FontWeight.normal,
+                        ),
                       ),
+                      selected: isSelected,
+                      selectedColor: Colors.blueAccent,
+                      backgroundColor: Colors.grey[200],
+                      onSelected: (_) {
+                        setState(() {
+                          selectedFilter = index;
+                        });
+                        // filterResults(filters[index]);
+                      },
                     ),
-                    selected: isSelected,
-                    selectedColor: Colors.blueAccent,
-                    backgroundColor: Colors.grey[200],
-                    onSelected: (_) {
-                      setState(() {
-                        selectedFilter = index;
-                      });
-                      // هنا تقدر تعمل الفلترة
-                      // filterResults(filters[index]);
-                    },
-                  ),
-                );
-              }),
+                  );
+                }),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

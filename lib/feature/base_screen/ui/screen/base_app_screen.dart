@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:revo/feature/add_building/ui/screen/add_building.dart';
+import 'package:revo/feature/add_building/ui/screen/add_property.dart';
 import 'package:revo/feature/home_screen/ui/screen/home_screen.dart';
+import 'package:revo/feature/profile_screen/ui/screen/profile_screen.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
@@ -29,7 +30,7 @@ class _BaseScreenState extends State<BaseScreen> {
       icon: Icons.add_circle_outline,
       activeIcon: Icons.add_circle,
       label: 'إضافة',
-      page: const AddBuilding(),
+      page: const AddProperty(),
     ),
     BottomNavigationItem(
       icon: Icons.notifications_none,
@@ -41,7 +42,7 @@ class _BaseScreenState extends State<BaseScreen> {
       icon: Icons.person_outline,
       activeIcon: Icons.person,
       label: 'حسابي',
-      page: const HomeScreen(),
+      page: const ProfileScreen(),
     ),
   ];
 

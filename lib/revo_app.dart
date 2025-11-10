@@ -8,7 +8,7 @@ class RevoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Bottom Navigation Demo',
+      title: 'Revo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         useMaterial3: true,
@@ -22,6 +22,7 @@ class RevoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: AppPages.first,
       getPages: AppPages.routes,
+      locale: const Locale("ar", "EG"),
     );
   }
 }

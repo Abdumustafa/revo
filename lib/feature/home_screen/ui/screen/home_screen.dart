@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
 import 'package:revo/feature/home_screen/ui/widget/body_map_conntent/body_screen.dart';
 import 'package:revo/feature/home_screen/ui/widget/search_and_filter.dart';
 
@@ -8,16 +9,19 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Color.fromARGB(255, 237, 248, 255),
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0xff3DB379),
         title: const Text('Revo'),
-        centerTitle: true,
-        leading: Icon(Icons.map_outlined),
         actions: [
-          Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Icon(Icons.dark_mode),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed('/PropertyDetails');
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: Icon(Icons.dark_mode),
+            ),
           )
         ],
       ),
@@ -32,7 +36,7 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.blueAccent,
         child: const Icon(Icons.map_rounded, color: Colors.white),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }

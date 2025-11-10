@@ -14,32 +14,31 @@ class CategoryShowAll extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 8,
-            ),
-            child: Row(children: [
-              Icon(Icons.arrow_back_ios, size: 18, color: Colors.blueAccent),
-              Text(
-                "عرض الكل",
-                style: TextStyle(
-                    color: Colors.blueAccent,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold),
-              )
-            ])),
-        Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
           ),
           child: Text(
             categoryTitle,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
+        Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12,
+            ),
+            child: Row(children: [
+              Text(
+                "عرض الكل",
+                style: TextStyle(
+                    color: Color(0xff2d8fcc),
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold),
+              ),
+              Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xff2d8fcc)),
+            ])),
       ],
     );
   }

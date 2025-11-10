@@ -35,7 +35,7 @@ class ProductListHorizontal extends StatelessWidget {
     ];
 
     return SizedBox(
-      height: 320,
+      height: 230,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: products.length,
@@ -50,4 +50,3 @@ class ProductListHorizontal extends StatelessWidget {
     );
   }
 }
-
