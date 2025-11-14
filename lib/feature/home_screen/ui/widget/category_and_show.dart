@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
 
 class CategoryShowAll extends StatelessWidget {
   final String categoryTitle;
@@ -22,6 +23,7 @@ class CategoryShowAll extends StatelessWidget {
             style: TextStyle(
               fontSize: 15,
               fontWeight: FontWeight.bold,
+              fontFamily: "Cairo",
             ),
           ),
         ),
@@ -29,16 +31,14 @@ class CategoryShowAll extends StatelessWidget {
             padding: const EdgeInsets.symmetric(
               horizontal: 12,
             ),
-            child: Row(children: [
-              Text(
-                "عرض الكل",
-                style: TextStyle(
-                    color: Color(0xff2d8fcc),
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold),
-              ),
-              Icon(Icons.arrow_forward_ios, size: 14, color: Color(0xff2d8fcc)),
-            ])),
+            child: Text(
+              "عرض الكل",
+              style: TextStyle(
+                  color:ColorsManager.secondaryColor,
+                  fontSize: 10,
+                  fontFamily: "Cairo",
+                  fontWeight: FontWeight.bold),
+            )),
       ],
     );
   }

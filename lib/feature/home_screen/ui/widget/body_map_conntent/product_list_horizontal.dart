@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:revo/feature/home_screen/logic/product_model.dart';
+import 'package:revo/core/models/product_model.dart';
 import 'package:revo/feature/home_screen/ui/widget/body_map_conntent/single_product_item.dart';
 
 class ProductListHorizontal extends StatelessWidget {
@@ -18,7 +18,7 @@ class ProductListHorizontal extends StatelessWidget {
         title: "شقة سكنية 125 م للبيع",
         description: "كاش بالشروق القاهرة، موقع مميز وتشطيب راقي.",
         price: "EGP 2,500,000",
-        imageUrl: "assets/image/home3.webp",
+        imageUrl: "assets/image/home2.webp",
       ),
       ProductModel(
         title: "شقة سكنية 125 م للبيع",

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:revo/core/theaming/font_weight_helper.dart';
 import 'package:revo/core/theaming/styles.dart';
-import 'package:revo/feature/property_details/ui/widget/advertiser_details.dart';
 import 'package:revo/feature/property_details/ui/widget/amenities_list.dart';
 import 'package:revo/feature/property_details/ui/widget/description_property.dart';
 import 'package:revo/feature/property_details/ui/widget/labeled_text.dart';
@@ -16,46 +14,28 @@ class PropertyDetailsContent extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            '29/1/2023 : تاريخ نشر العقار',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[600],
-              fontFamily: 'Cairo',
-            ),
-          ),
-          SizedBox(height: 10),
+          Text('29/1/2023 : تاريخ نشر العقار',
+              style: TextStyles.font12greyboldCairo),
+          SizedBox(height: 5),
           Text(
             'محلات تجاريه 22م للبيع  بالتقسيط بمدينه دمياط الجديده دمياط',
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
             style: TextStyles.font18BlackBoldCairo,
           ),
-          Text("100000000 ",
-              style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.blueAccent,
-                  height: 1.6,
-                  fontWeight: FontWeightHelper.extraBold,
-                  fontFamily: 'Cairo')),
-          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
+              Icon(Icons.location_on, color: Colors.grey, size: 18),
               Text(
                 'دمياط الجديدة، دمياط، مصر',
-                style: TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.grey[600],
-                  fontFamily: 'Cairo',
-                ),
+                style: TextStyles.font12greyboldCairo,
               ),
-              Icon(Icons.location_on, color: Colors.grey, size: 24),
               SizedBox(width: 8),
             ],
           ),
+          SizedBox(height: 5),
+          Text("100000000 EGP", style: TextStyles.font22ColorboldCairo),
           SizedBox(height: 10),
           Text(
             "موقع العقار",
@@ -64,7 +44,7 @@ class PropertyDetailsContent extends StatelessWidget {
             style: TextStyles.font18BlackBoldCairo,
           ),
           Container(
-            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             height: 200,
             width: double.infinity,
             child: Image.asset(
@@ -81,21 +61,15 @@ class PropertyDetailsContent extends StatelessWidget {
             label: "العنوان بالتفصيل",
             text: "دمياط الجديدة، دمياط، مصر",
           ),
+          SizedBox(height: 10),
           LabelValueText(
             label: "اكثر ما يميز العقار",
             text:
                 " موقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنواموقع مميز، سعر مناسب، تقسيط على 5 سنوات",
           ),
-          AmenitiesList(),
           SizedBox(height: 10),
-          Text(
-            "ناشر الاعلان",
-            textAlign: TextAlign.right,
-            textDirection: TextDirection.rtl,
-            style: TextStyles.font18BlackBoldCairo,
-          ),
+          AmenitiesList(),
           SizedBox(height: 20),
-          AdvertiserDetails()
         ],
       ),
     );

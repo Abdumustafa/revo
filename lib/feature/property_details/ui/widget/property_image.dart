@@ -1,9 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
 
 class ImageCarouselCard extends StatefulWidget {
-  final List<String> images; // صورك
-  final Duration autoScrollDuration; // المدة بين كل Scroll
+  final List<String> images;
+  final Duration autoScrollDuration;
 
   const ImageCarouselCard({
     super.key,
@@ -49,10 +50,9 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
-      aspectRatio: 1, // مربع متناسق
+      aspectRatio: 1,
       child: Stack(
         children: [
-          // الصور (PageView)
           PageView.builder(
             controller: _pageController,
             itemCount: widget.images.length,
@@ -62,8 +62,8 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(18),
+                  bottomRight: Radius.circular(18),
                 ),
                 child: Image.asset(
                   widget.images[index],
@@ -73,8 +73,6 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
               );
             },
           ),
-
-          // الأزرار العلوية (الرجوع + الشير + البلاغ)
           Positioned(
             top: 12,
             right: 12,
@@ -82,9 +80,8 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                // زر الرجوع
                 _buildIconButton(
-                  icon: Icons.arrow_back,
+                  icon: Icons.arrow_back_ios_rounded,
                   onTap: () => Navigator.pop(context),
                 ),
                 Row(
@@ -103,7 +100,6 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
               ],
             ),
           ),
-
           Positioned(
             bottom: 12,
             left: 0,
@@ -115,11 +111,11 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
                 (index) => AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   margin: const EdgeInsets.symmetric(horizontal: 3),
-                  width: _currentPage == index ? 10 : 6,
-                  height: 6,
+                  width: _currentPage == index ? 22 : 8,
+                  height: 8,
                   decoration: BoxDecoration(
                     color: _currentPage == index
-                        ? Colors.white
+                        ? ColorsManager.mainColor
                         : Colors.white.withOpacity(0.5),
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -142,7 +138,7 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: Colors.black.withOpacity(0.4),
+          color: Colors.white.withOpacity(0.3),
           shape: BoxShape.circle,
         ),
         child: Icon(icon, color: Colors.white, size: 22),

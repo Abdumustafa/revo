@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:revo/feature/add_building/ui/screen/add_property.dart';
+import 'package:revo/core/models/bottom_navigation_item.dart';
+import 'package:revo/core/theaming/colors.dart';
+import 'package:revo/feature/add_property/ui/screen/add_property.dart';
+import 'package:revo/feature/compound/ui/screen/compounds_screen.dart';
 import 'package:revo/feature/home_screen/ui/screen/home_screen.dart';
+import 'package:revo/feature/invest_screen/ui/screen/invest_screen.dart';
 import 'package:revo/feature/profile_screen/ui/screen/profile_screen.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -15,38 +19,49 @@ class _BaseScreenState extends State<BaseScreen> {
 
   final List<BottomNavigationItem> _navigationItems = [
     BottomNavigationItem(
-      icon: Icons.home,
-      activeIcon: Icons.home_filled,
-      label: 'الرئيسية',
+      icon: Icons.home_outlined,
+      activeIcon: Icons.home_sharp,
+      label: 'عقارات',
       page: const HomeScreen(),
     ),
     BottomNavigationItem(
-      icon: Icons.search,
-      activeIcon: Icons.search,
-      label: 'البحث',
-      page: const HomeScreen(),
+      icon: Icons.trending_up_rounded,
+      activeIcon: Icons.attach_money,
+      label: 'استثمر',
+      page: const InvestScreen(),
     ),
     BottomNavigationItem(
       icon: Icons.add_circle_outline,
       activeIcon: Icons.add_circle,
       label: 'إضافة',
-      page: const AddProperty(),
+      page: SizedBox.shrink(),
     ),
     BottomNavigationItem(
-      icon: Icons.notifications_none,
-      activeIcon: Icons.notifications,
-      label: 'الإشعارات',
-      page: const HomeScreen(),
+      icon: Icons.holiday_village_outlined,
+      activeIcon: Icons.holiday_village,
+      label: 'كومبوند',
+      page:  CompoundsScreen(),
     ),
     BottomNavigationItem(
-      icon: Icons.person_outline,
-      activeIcon: Icons.person,
-      label: 'حسابي',
+      icon: Icons.menu_open_outlined,
+      activeIcon: Icons.menu_open,
+      label: 'المزيد',
       page: const ProfileScreen(),
     ),
   ];
 
   void _onItemTapped(int index) {
+    // لو زر الإضافة
+    if (index == 2) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const AddProperty(),
+        ),
+      );
+      return;
+    }
+
     setState(() {
       _currentIndex = index;
     });
@@ -78,26 +93,16 @@ class _BaseScreenState extends State<BaseScreen> {
           }).toList(),
           type: BottomNavigationBarType.fixed,
           backgroundColor: Colors.white,
-          selectedItemColor: Theme.of(context).primaryColor,
-          unselectedItemColor: Colors.grey[600],
-          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          selectedItemColor: ColorsManager.mainColor,
+          unselectedItemColor: const Color.fromARGB(255, 98, 113, 114),
+          selectedLabelStyle: const TextStyle(
+            fontWeight: FontWeight.bold,
+            fontFamily: "Cairo",
+          ),
+          unselectedLabelStyle: const TextStyle(fontFamily: "Cairo"),
           showUnselectedLabels: true,
         ),
       ),
     );
   }
-}
-
-class BottomNavigationItem {
-  final IconData icon;
-  final IconData activeIcon;
-  final String label;
-  final Widget page;
-
-  const BottomNavigationItem({
-    required this.icon,
-    required this.activeIcon,
-    required this.label,
-    required this.page,
-  });
 }

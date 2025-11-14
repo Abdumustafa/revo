@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:revo/feature/add_building/ui/widget/property_Type_Field.dart';
-import 'package:revo/feature/add_building/ui/widget/property_selector.dart';
+import 'package:revo/feature/add_property/ui/widget/property_type_field.dart';
+import 'package:revo/feature/add_property/ui/widget/property_selector.dart';
 
 class LocationBuilding extends StatefulWidget {
   const LocationBuilding({
@@ -21,9 +21,6 @@ class _LocationBuildingState extends State<LocationBuilding> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("مكان العقار",
-              style:
-                  const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
           PropertySelector(
             title: "المحافظه",
             subtitle: 'اخترالمحافظه',

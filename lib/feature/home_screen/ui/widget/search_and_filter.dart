@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
 
 class SearchWithFilter extends StatefulWidget {
   const SearchWithFilter({super.key});
@@ -24,11 +25,9 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Color(0xff3DB379),
+      color: ColorsManager.mainColor,
       child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: 14,
-        ),
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,6 +36,7 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
                 hintText: 'ابحث عن عقار',
                 hintStyle: TextStyle(
                   color: Colors.grey[500],
+                  fontFamily: "Cairo",
                   fontSize: 12,
                 ),
                 prefixIcon: Icon(
@@ -49,17 +49,18 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
                 contentPadding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 enabledBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(12),
                   borderSide:
                       BorderSide(color: Colors.grey.shade300, width: 0.5),
                 ),
                 focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  borderSide: BorderSide(color: Colors.blueAccent, width: 0.5),
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(
+                      color: ColorsManager.secondaryColor, width: 0.5),
                 ),
               ),
             ),
-            const SizedBox(height: 12),
+            const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -84,7 +85,7 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
                 ),
               ],
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 5),
             SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
@@ -98,12 +99,14 @@ class _SearchWithFilterState extends State<SearchWithFilter> {
                         filters[index],
                         style: TextStyle(
                           color: isSelected ? Colors.white : Colors.grey[800],
+                          fontFamily: "Cairo",
                           fontWeight:
                               isSelected ? FontWeight.bold : FontWeight.normal,
+                          fontSize: 12,
                         ),
                       ),
                       selected: isSelected,
-                      selectedColor: Colors.blueAccent,
+                      selectedColor: ColorsManager.secondaryColor,
                       backgroundColor: Colors.grey[200],
                       onSelected: (_) {
                         setState(() {
@@ -135,12 +138,12 @@ Widget _buildToggleButton({
         duration: const Duration(milliseconds: 250),
         height: 35,
         decoration: BoxDecoration(
-          color: isSelected ? Colors.blueAccent : Colors.grey[200],
+          color: isSelected ? ColorsManager.secondaryColor : Colors.grey[200],
           borderRadius: BorderRadius.circular(25),
           boxShadow: isSelected
               ? [
                   BoxShadow(
-                    color: Colors.blueAccent.withOpacity(0.4),
+                    color: ColorsManager.secondaryColor.withOpacity(0.4),
                     blurRadius: 8,
                     offset: const Offset(0, 3),
                   )
@@ -153,7 +156,8 @@ Widget _buildToggleButton({
             style: TextStyle(
               color: isSelected ? Colors.white : Colors.grey[800],
               fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
-              fontSize: 16,
+              fontSize: 14,
+              fontFamily: "Cairo",
             ),
           ),
         ),

@@ -1,6 +1,8 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:revo/core/theaming/colors.dart';
+import 'package:revo/core/theaming/styles.dart';
 
 class AddPropertyImages extends StatefulWidget {
   const AddPropertyImages({super.key});
@@ -12,10 +14,9 @@ class AddPropertyImages extends StatefulWidget {
 class _AddPropertyImagesState extends State<AddPropertyImages> {
   final List<XFile> _images = [];
   final ImagePicker _picker = ImagePicker();
-  bool _isPicking = false; // Flag لمنع فتح متعدد
+  bool _isPicking = false;
 
   Future<void> _pickImages() async {
-    // منع فتح الـ picker لو هو شغال بالفعل
     if (_isPicking) {
       return;
     }
@@ -32,7 +33,10 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
           if (!mounted) return;
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
-              content: Text('يمكنك رفع حتى 10 صور فقط'),
+              content: Text(
+                'يمكنك رفع حتى 10 صور فقط',
+                style: TextStyle(fontFamily: "Cairo"),
+              ),
               backgroundColor: Colors.red,
             ),
           );
@@ -47,7 +51,10 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
       if (!mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('حدث خطأ في اختيار الصور'),
+          content: Text(
+            'حدث خطأ في اختيار الصور',
+            style: TextStyle(fontFamily: "Cairo"),
+          ),
           backgroundColor: Colors.red,
         ),
       );
@@ -71,36 +78,36 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'أضف صور للعقار',
-          style: TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-          ),
+          style: TextStyles.font18mainColorboldCairo,
         ),
         const SizedBox(height: 10),
 
         // مؤشر التحميل
         if (_isPicking)
-          const LinearProgressIndicator(
-            backgroundColor: Colors.deepPurple,
-            valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+          Container(
+            child: const LinearProgressIndicator(
+              backgroundColor: ColorsManager.mainColor,
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+            ),
           ),
 
         GestureDetector(
-          onTap: _isPicking ? null : _pickImages, // تعطيل الزر أثناء التحميل
+          onTap: _isPicking ? null : _pickImages,
           child: AbsorbPointer(
-            absorbing: _isPicking, // منع التفاعل أثناء التحميل
+            absorbing: _isPicking,
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               width: double.infinity,
               height: 150,
               decoration: BoxDecoration(
-                color:
-                    _isPicking ? Colors.grey.shade300 : const Color(0xFFF3EFFF),
+                color: _isPicking
+                    ? Colors.grey.shade300
+                    : const Color.fromARGB(255, 255, 255, 255),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: _isPicking ? Colors.grey : Colors.deepPurple.shade200,
+                  color: _isPicking ? Colors.grey : ColorsManager.mainColor,
                   style: BorderStyle.solid,
                   width: 1.5,
                 ),
@@ -113,7 +120,9 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                           _isPicking
                               ? Icons.hourglass_top
                               : Icons.add_a_photo_outlined,
-                          color: _isPicking ? Colors.grey : Colors.deepPurple,
+                          color: _isPicking
+                              ? Colors.grey
+                              : ColorsManager.mainColor,
                           size: 40,
                         ),
                         const SizedBox(height: 8),
@@ -122,13 +131,17 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                               ? 'جاري تحميل الصور...'
                               : 'اضغط لإضافة صورة',
                           style: TextStyle(
-                            color: _isPicking ? Colors.grey : Colors.deepPurple,
+                            fontFamily: "Cairo",
+                            color: _isPicking
+                                ? Colors.grey
+                                : ColorsManager.mainColor,
                           ),
                         ),
                         const SizedBox(height: 5),
                         Text(
                           'أضف حتى 10 صور',
                           style: TextStyle(
+                            fontFamily: "Cairo",
                             color: _isPicking ? Colors.grey : Colors.grey,
                             fontSize: 12,
                           ),
@@ -200,11 +213,7 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                                   ),
                                   child: Text(
                                     '${index + 1}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 10,
-                                      fontWeight: FontWeight.bold,
-                                    ),
+                                    style: TextStyles.font10whiteboldCairo,
                                   ),
                                 ),
                               ),
@@ -223,6 +232,7 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
           Text(
             'عدد الصور: ${_images.length}/10',
             style: TextStyle(
+              fontFamily: "Cairo",
               color: _images.length == 10 ? Colors.red : Colors.green,
               fontWeight: FontWeight.bold,
             ),

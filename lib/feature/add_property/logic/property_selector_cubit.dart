@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:revo/core/theaming/styles.dart';
 
 @immutable
 abstract class FieldSelectorState {}
@@ -29,7 +30,11 @@ class FieldSelectorCubit extends Cubit<FieldSelectorState> {
           children: options.map((item) {
             return ListTile(
               title: Center(
-                  child: Text(item, style: const TextStyle(fontSize: 18))),
+                child: Text(
+                  item,
+                  style: TextStyles.font18blackmediumCairo,
+                ),
+              ),
               onTap: () {
                 select(item);
                 Navigator.pop(ctx);

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
+import 'package:revo/core/theaming/styles.dart';
 import 'package:revo/core/widget/primary_button.dart';
-import 'package:revo/feature/add_building/ui/widget/amenities_selector.dart';
-import 'package:revo/feature/add_building/ui/widget/location_building.dart';
-import 'package:revo/feature/add_building/ui/widget/property_item_widget.dart';
-import 'package:revo/feature/add_building/ui/widget/property_selector.dart';
-import 'package:revo/feature/add_building/ui/widget/property_type_field.dart';
-import 'package:revo/feature/add_building/ui/widget/add_property_images.dart';
+import 'package:revo/feature/add_property/ui/widget/amenities_selector.dart';
+import 'package:revo/feature/add_property/ui/widget/location_building.dart';
+import 'package:revo/feature/add_property/ui/widget/property_item_widget.dart';
+import 'package:revo/feature/add_property/ui/widget/property_selector.dart';
+import 'package:revo/feature/add_property/ui/widget/add_property_images.dart';
+import 'package:revo/feature/add_property/ui/widget/property_type_field.dart';
 
 class AddProperty extends StatefulWidget {
   const AddProperty({super.key});
@@ -28,9 +30,22 @@ class _AddPropertyState extends State<AddProperty> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Add Building'),
+        backgroundColor: ColorsManager.mainColor,
+        title: Text(
+          'اضافة عقار',
+          style: TextStyles.font18whiteboldCairo,
+        ),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios_rounded,
+            size: 20,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -69,6 +84,7 @@ class _AddPropertyState extends State<AddProperty> {
                 title: 'وصف العقار',
                 hintText: 'مثال (عماره للبيع...)',
               ),
+              SizedBox(height: 5),
               AddPropertyImages(),
               PropertyInfoGrid(),
               AmenitiesSelector(),
@@ -77,12 +93,12 @@ class _AddPropertyState extends State<AddProperty> {
                 padding: const EdgeInsets.only(top: 18),
                 child: PrimaryButton(
                   text: 'حفظ',
+                  color: ColorsManager.mainColor,
                   onPressed: () {
                     debugPrint('تم الحفظ');
                   },
                 ),
               ),
-             
             ],
           ),
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:revo/core/theaming/colors.dart';
+import 'package:revo/core/theaming/styles.dart';
 
 class PropertyInfoItem {
   final String title;
@@ -37,7 +39,7 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
   }
 
   void _showNumberPicker(BuildContext context) {
-    int selectedValue = _currentValue; // متغير لتخزين القيمة المختارة
+    int selectedValue = _currentValue;
 
     showModalBottomSheet(
       context: context,
@@ -53,10 +55,7 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
                 children: [
                   Text(
                     "اختيار ${widget.item.title}",
-                    style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyles.font18blackmediumCairo,
                   ),
                   const SizedBox(height: 20),
                   Expanded(
@@ -79,7 +78,7 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
                         return Center(
                           child: Text(
                             '${index + 1}',
-                            style: const TextStyle(fontSize: 18),
+                            style: TextStyles.font18blackmediumCairo,
                           ),
                         );
                       }),
@@ -112,13 +111,12 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
-                                _currentValue =
-                                    selectedValue; // تحديث القيمة في الويدجت
+                                _currentValue = selectedValue;
                               });
                               Navigator.pop(context);
                             },
                             style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue[600],
+                              backgroundColor: ColorsManager.mainColor,
                               foregroundColor: Colors.white,
                             ),
                             child: const Text('تأكيد'),
@@ -145,23 +143,23 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: Colors.blue.shade100, width: 1.5),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.blue.shade50,
-              blurRadius: 8,
-              offset: const Offset(0, 4),
-            ),
-          ],
+          border: Border.all(color: ColorsManager.mainColor, width: 1.5),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color: ColorsManager.mainColor.withOpacity(0.5),
+          //     blurRadius: 8,
+          //     offset: const Offset(0, 4),
+          //   ),
+          // ],
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(widget.item.icon, color: Colors.blue.shade700, size: 20),
+            Icon(widget.item.icon, color: ColorsManager.mainColor, size: 20),
             const SizedBox(height: 4),
             Text(
               widget.item.title,
-              style: const TextStyle(fontSize: 12, color: Colors.black54),
+              style: TextStyles.font12blackmediumCairo,
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
@@ -171,15 +169,9 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
               duration: const Duration(milliseconds: 200),
               transitionBuilder: (child, animation) =>
                   ScaleTransition(scale: animation, child: child),
-              child: Text(
-                '$_currentValue',
-                key: ValueKey(_currentValue),
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.blue.shade900,
-                ),
-              ),
+              child: Text('$_currentValue',
+                  key: ValueKey(_currentValue),
+                  style: TextStyles.font22mainColorboldCairo),
             ),
           ],
         ),
@@ -226,12 +218,11 @@ class _PropertyInfoGridState extends State<PropertyInfoGrid> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const SizedBox(height: 12),
-        const Text(
+        Text(
           'تحديد مواصفات العقار',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          style: TextStyles.font18mainColorboldCairo,
           textAlign: TextAlign.right,
         ),
-        const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.all(30.0),
           child: Directionality(

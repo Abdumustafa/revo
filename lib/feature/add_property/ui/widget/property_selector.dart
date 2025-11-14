@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:revo/feature/add_building/logic/property_selector_cubit.dart';
+import 'package:revo/core/theaming/styles.dart';
+import 'package:revo/feature/add_property/logic/property_selector_cubit.dart';
 
 class PropertySelector extends StatelessWidget {
   const PropertySelector({
@@ -39,8 +40,7 @@ class PropertySelector extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                  style: TextStyles.font18mainColorboldCairo,
                 ),
                 GestureDetector(
                   onTap: () => cubit.showSelectionSheet(context),
@@ -58,6 +58,7 @@ class PropertySelector extends StatelessWidget {
                           display,
                           style: TextStyle(
                             color: isSelected ? Colors.black : Colors.grey,
+                            fontFamily: "Cairo",
                             fontSize: 16,
                           ),
                         ),

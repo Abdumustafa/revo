@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
+import 'package:revo/core/theaming/styles.dart';
 
 class Amenity {
   final String title;
@@ -35,17 +37,11 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
   @override
   Widget build(BuildContext context) {
     return Directionality(
-      textDirection: TextDirection.rtl, // للغة العربية
+      textDirection: TextDirection.rtl,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'المرافق',
-            style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
+          Text('المرافق', style: TextStyles.font18mainColorboldCairo),
           const SizedBox(height: 8),
           ListView.builder(
             itemCount: _amenities.length,
@@ -54,7 +50,7 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
             itemBuilder: (context, index) {
               final item = _amenities[index];
               return ListTile(
-                leading: Icon(item.icon, color: Colors.blue.shade700),
+                leading: Icon(item.icon, color: ColorsManager.mainColor),
                 title: Text(item.title),
                 trailing: Checkbox(
                   value: item.isSelected,
@@ -63,7 +59,7 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
                       item.isSelected = value ?? false;
                     });
                   },
-                  activeColor: Colors.blue,
+                  activeColor: ColorsManager.secondaryColor,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4),
                   ),

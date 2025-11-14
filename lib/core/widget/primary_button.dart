@@ -71,6 +71,7 @@ class PrimaryButton extends StatelessWidget {
                     style: TextStyle(
                       color: textColor,
                       fontWeight: FontWeight.bold,
+                      fontFamily: "Cairo",
                       fontSize: fontSize,
                     ),
                   ),

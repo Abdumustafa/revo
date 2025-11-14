@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
 import 'package:revo/core/theaming/styles.dart';
 
 class Amenity {
@@ -66,21 +67,21 @@ class _AmenitiesListState extends State<AmenitiesList> {
                 padding: const EdgeInsets.symmetric(vertical: 4),
                 child: Row(
                   children: [
-                    // الأيقونة
-                    Icon(item.icon, color: Colors.blue.shade700),
+                    Icon(item.icon, color: ColorsManager.mainColor),
                     const SizedBox(width: 12),
-                    // النص
                     Text(
                       item.title,
-                      style: const TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16, fontFamily: "Cairo"),
                     ),
                     const Spacer(),
-                    // نعم أو لا (ثابت)
                     Text(
                       item.isAvailable ? 'نعم' : 'لا',
                       style: TextStyle(
-                        color: item.isAvailable ? Colors.green : Colors.red,
+                        color: item.isAvailable
+                            ? ColorsManager.secondaryColor
+                            : Colors.red,
                         fontWeight: FontWeight.bold,
+                        fontFamily: "Cairo",
                       ),
                     ),
                   ],
