@@ -16,22 +16,20 @@ class PropertyDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: Colors.white,
-          body: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ImageCarouselCard(
-                  images: propertyImage,
-                ),
-                PropertyDetailsContent(),
-              ],
-            ),
+      child: Scaffold(
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ImageCarouselCard(
+                images: propertyImage,
+              ),
+              PropertyDetailsContent(),
+            ],
           ),
-          bottomNavigationBar: BottomBarButtons(),
         ),
+        bottomNavigationBar: BottomBarButtons(),
       ),
     );
   }

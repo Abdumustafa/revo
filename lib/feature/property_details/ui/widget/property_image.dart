@@ -62,8 +62,8 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(18),
-                  bottomRight: Radius.circular(18),
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
                 ),
                 child: Image.asset(
                   widget.images[index],
@@ -74,7 +74,7 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
             },
           ),
           Positioned(
-            top: 12,
+            top: 50,
             right: 12,
             left: 12,
             child: Row(
@@ -117,7 +117,7 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
                     color: _currentPage == index
                         ? ColorsManager.mainColor
                         : Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),

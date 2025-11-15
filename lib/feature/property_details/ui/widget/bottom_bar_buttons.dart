@@ -6,14 +6,16 @@ class BottomBarButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const Color primaryColor = Color(0xff036268); // لون التطبيق
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
-            blurRadius: 12,
+            color: Colors.black.withOpacity(0.08),
+            blurRadius: 10,
             offset: const Offset(0, -4),
           ),
         ],
@@ -24,14 +26,13 @@ class BottomBarButtons extends StatelessWidget {
       ),
       child: Row(
         children: [
+          // ----------------------- CALL BUTTON -----------------------
           Expanded(
             flex: 4,
-            child: Container(
+            child: SizedBox(
               height: 52,
-              margin: const EdgeInsets.only(left: 8),
               child: ElevatedButton.icon(
-                onPressed: () {
-                },
+                onPressed: () {},
                 icon: const Icon(
                   Icons.phone,
                   color: Colors.white,
@@ -47,53 +48,53 @@ class BottomBarButtons extends StatelessWidget {
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF00A86B),
+                  backgroundColor: primaryColor,
                   padding:
                       const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  elevation: 2,
-                  shadowColor: const Color(0xFF00A86B).withOpacity(0.3),
+                  elevation: 3,
+                  shadowColor: primaryColor.withOpacity(0.3),
                 ),
               ),
             ),
           ),
 
+          const SizedBox(width: 12),
+
+          // ----------------------- WHATSAPP BUTTON -----------------------
           Expanded(
             flex: 6,
-            child: Container(
+            child: SizedBox(
               height: 52,
-              margin: const EdgeInsets.only(right: 8),
               child: OutlinedButton.icon(
-                onPressed: () {
-                },
-                icon: const Icon(
+                onPressed: () {},
+                icon: Icon(
                   FontAwesomeIcons.whatsapp,
-                  color: Color(0xFF00A86B),
+                  color: primaryColor,
                   size: 20,
                 ),
-                label: const Text(
+                label: Text(
                   "تواصل عبر واتساب",
                   style: TextStyle(
-                    color: Color(0xFF00A86B),
+                    color: primaryColor,
                     fontWeight: FontWeight.w700,
                     fontFamily: "Cairo",
                     fontSize: 14,
                   ),
                 ),
                 style: OutlinedButton.styleFrom(
-                  backgroundColor: const Color(0xFFF0FDF4),
+                  backgroundColor: primaryColor.withOpacity(0.08),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  side: const BorderSide(
-                    color: Color(0xFF00A86B),
+                  side: BorderSide(
+                    color: primaryColor,
                     width: 1.5,
                   ),
-                  elevation: 0,
                 ),
               ),
             ),
