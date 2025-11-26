@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/core/theaming/colors.dart';
 
 class CategoryShowAll extends StatelessWidget {
@@ -15,30 +16,28 @@ class CategoryShowAll extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: 16,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Text(
             categoryTitle,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 15.sp,
               fontWeight: FontWeight.bold,
               fontFamily: "Cairo",
             ),
           ),
         ),
         Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 12,
+          padding: EdgeInsets.symmetric(horizontal: 12.w),
+          child: Text(
+            "عرض الكل",
+            style: TextStyle(
+              color: ColorsManager.secondaryColor,
+              fontSize: 10.sp,
+              fontFamily: "Cairo",
+              fontWeight: FontWeight.bold,
             ),
-            child: Text(
-              "عرض الكل",
-              style: TextStyle(
-                  color:ColorsManager.secondaryColor,
-                  fontSize: 10,
-                  fontFamily: "Cairo",
-                  fontWeight: FontWeight.bold),
-            )),
+          ),
+        ),
       ],
     );
   }

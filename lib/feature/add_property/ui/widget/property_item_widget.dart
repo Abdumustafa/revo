@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/core/theaming/colors.dart';
 import 'package:revo/core/theaming/styles.dart';
 
@@ -49,28 +50,27 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
         return StatefulBuilder(
           builder: (BuildContext context, StateSetter setModalState) {
             return Container(
-              height: 300,
-              padding: const EdgeInsets.symmetric(vertical: 20),
+              height: 300.h,
+              padding: EdgeInsets.symmetric(vertical: 20.h),
               child: Column(
                 children: [
                   Text(
                     "اختيار ${widget.item.title}",
                     style: TextStyles.font18blackmediumCairo,
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Expanded(
                     child: CupertinoPicker(
                       magnification: 1.2,
                       squeeze: 1.1,
                       useMagnifier: true,
-                      itemExtent: 40,
+                      itemExtent: 40.h,
                       scrollController: FixedExtentScrollController(
                         initialItem: _currentValue - 1,
                       ),
                       onSelectedItemChanged: (int selectedItem) {
                         setModalState(() {
-                          selectedValue =
-                              selectedItem + 1; // تحديث القيمة المختارة
+                          selectedValue = selectedItem + 1;
                         });
                       },
                       children: List<Widget>.generate(widget.item.maxValue,
@@ -84,14 +84,13 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
                       }),
                     ),
                   ),
-                  const SizedBox(height: 20),
+                  SizedBox(height: 20.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      // زر الإلغاء
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: ElevatedButton(
                             onPressed: () {
                               Navigator.pop(context);
@@ -104,10 +103,9 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
                           ),
                         ),
                       ),
-                      // زر التأكيد
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: EdgeInsets.symmetric(horizontal: 20.w),
                           child: ElevatedButton(
                             onPressed: () {
                               setState(() {
@@ -142,36 +140,33 @@ class _PropertyItemWidgetState extends State<PropertyItemWidget> {
         duration: const Duration(milliseconds: 250),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(color: ColorsManager.mainColor, width: 1.5),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: ColorsManager.mainColor.withOpacity(0.5),
-          //     blurRadius: 8,
-          //     offset: const Offset(0, 4),
-          //   ),
-          // ],
+          borderRadius: BorderRadius.circular(14.r),
+          border: Border.all(color: ColorsManager.mainColor, width: 1.5.w),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(widget.item.icon, color: ColorsManager.mainColor, size: 20),
-            const SizedBox(height: 4),
+            Icon(widget.item.icon, color: ColorsManager.mainColor, size: 20.sp),
+            SizedBox(height: 4.h),
             Text(
               widget.item.title,
-              style: TextStyles.font12blackmediumCairo,
+              style: TextStyles.font12blackmediumCairo.copyWith(
+                fontSize: 12.sp,
+              ),
               textAlign: TextAlign.center,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
             AnimatedSwitcher(
               duration: const Duration(milliseconds: 200),
               transitionBuilder: (child, animation) =>
                   ScaleTransition(scale: animation, child: child),
               child: Text('$_currentValue',
                   key: ValueKey(_currentValue),
-                  style: TextStyles.font22mainColorboldCairo),
+                  style: TextStyles.font22mainColorboldCairo.copyWith(
+                    fontSize: 22.sp,
+                  )),
             ),
           ],
         ),
@@ -217,24 +212,24 @@ class _PropertyInfoGridState extends State<PropertyInfoGrid> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 12),
+        SizedBox(height: 12.h),
         Text(
           'تحديد مواصفات العقار',
-          style: TextStyles.font18mainColorboldCairo,
+          style: TextStyles.font18mainColorboldCairo.copyWith(fontSize: 18.sp),
           textAlign: TextAlign.right,
         ),
         Padding(
-          padding: const EdgeInsets.all(30.0),
+          padding: EdgeInsets.all(30.w),
           child: Directionality(
             textDirection: TextDirection.rtl,
             child: GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
               itemCount: _items.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                crossAxisSpacing: 10.0,
-                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.w,
+                mainAxisSpacing: 10.h,
                 childAspectRatio: 0.9,
               ),
               itemBuilder: (context, index) {

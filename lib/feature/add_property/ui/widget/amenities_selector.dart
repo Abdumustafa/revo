@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/core/theaming/colors.dart';
 import 'package:revo/core/theaming/styles.dart';
 
@@ -42,7 +43,7 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text('المرافق', style: TextStyles.font18mainColorboldCairo),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           ListView.builder(
             itemCount: _amenities.length,
             shrinkWrap: true,
@@ -50,8 +51,19 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
             itemBuilder: (context, index) {
               final item = _amenities[index];
               return ListTile(
-                leading: Icon(item.icon, color: ColorsManager.mainColor),
-                title: Text(item.title),
+                leading: Icon(
+                  item.icon,
+                  color: ColorsManager.mainColor,
+                  size: 24.sp,
+                ),
+                title: Text(
+                  item.title,
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontFamily: "Cairo",
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
                 trailing: Checkbox(
                   value: item.isSelected,
                   onChanged: (value) {
@@ -61,11 +73,13 @@ class _AmenitiesSelectorState extends State<AmenitiesSelector> {
                   },
                   activeColor: ColorsManager.secondaryColor,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(4),
+                    borderRadius: BorderRadius.circular(4.r),
                   ),
                 ),
-                contentPadding:
-                    const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 8.w,
+                  vertical: 2.h,
+                ),
                 onTap: () {
                   setState(() {
                     item.isSelected = !item.isSelected;

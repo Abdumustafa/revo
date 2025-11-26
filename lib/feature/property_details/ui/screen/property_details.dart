@@ -1,16 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/models/product_model.dart';
 import 'package:revo/feature/property_details/ui/widget/bottom_bar_buttons.dart';
 import 'package:revo/feature/property_details/ui/widget/property_details_content.dart';
 import 'package:revo/feature/property_details/ui/widget/property_image.dart';
 
 class PropertyDetails extends StatelessWidget {
-  const PropertyDetails({super.key});
+  const PropertyDetails({
+    super.key,
+    this.product,
+  });
   final List<String> propertyImage = const [
     "assets/image/home2.webp",
     "assets/image/home1.webp",
     "assets/image/home2.webp",
     "assets/image/home4.webp",
   ];
+
+  final ProductModel? product;
 
   @override
   Widget build(BuildContext context) {

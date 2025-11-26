@@ -1,27 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:revo/feature/home_screen/ui/widget/body_map_conntent/product_item.dart';
+class BodyScreen extends StatelessWidget {
+   BodyScreen({super.key, required this.filter});
 
-class BodyScreen extends StatefulWidget {
-  const BodyScreen({super.key});
+  final String filter;
 
-  @override
-  State<BodyScreen> createState() => _BodyScreenState();
-}
+  final List<String> categories = [
+    'شقق',
+    'فلل',
+    'أراضي',
+    'محلات',
+    'مكاتب',
+    'عمارات',
+    'مصانع',
+  ];
 
-class _BodyScreenState extends State<BodyScreen> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            ProductItem(),
-            ProductItem(),
-            ProductItem(),
-            ProductItem(),
-            ProductItem(),
-          ],
-        ),
+    List<String> displayedCategories = filter == 'الكل'
+        ? categories
+        : categories.where((c) => c == filter).toList();
+
+    return SingleChildScrollView(
+      child: Column(
+        children: displayedCategories
+            .map((category) => ProductItem(categoryTitle: category))
+            .toList(),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomBarButtons extends StatelessWidget {
@@ -6,53 +7,52 @@ class BottomBarButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color primaryColor = Color(0xff036268); // لون التطبيق
+    const Color primaryColor = Color(0xff036268);
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 16.h),
       decoration: BoxDecoration(
         color: Colors.white,
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.08),
-            blurRadius: 10,
-            offset: const Offset(0, -4),
+            blurRadius: 10.r,
+            offset: Offset(0, -4.h),
           ),
         ],
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20),
-          topRight: Radius.circular(20),
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.r),
+          topRight: Radius.circular(20.r),
         ),
       ),
       child: Row(
         children: [
-          // ----------------------- CALL BUTTON -----------------------
           Expanded(
             flex: 4,
             child: SizedBox(
-              height: 52,
+              height: 52.h,
               child: ElevatedButton.icon(
                 onPressed: () {},
-                icon: const Icon(
+                icon: Icon(
                   Icons.phone,
                   color: Colors.white,
-                  size: 20,
+                  size: 20.sp,
                 ),
-                label: const Text(
+                label: Text(
                   "اتصال",
                   style: TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontFamily: "Cairo",
-                    fontSize: 16,
+                    fontSize: 16.sp,
                   ),
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: primaryColor,
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   elevation: 3,
                   shadowColor: primaryColor.withOpacity(0.3),
@@ -60,20 +60,17 @@ class BottomBarButtons extends StatelessWidget {
               ),
             ),
           ),
-
-          const SizedBox(width: 12),
-
-          // ----------------------- WHATSAPP BUTTON -----------------------
+          SizedBox(width: 12.w),
           Expanded(
             flex: 6,
             child: SizedBox(
-              height: 52,
+              height: 52.h,
               child: OutlinedButton.icon(
                 onPressed: () {},
                 icon: Icon(
                   FontAwesomeIcons.whatsapp,
                   color: primaryColor,
-                  size: 20,
+                  size: 20.sp,
                 ),
                 label: Text(
                   "تواصل عبر واتساب",
@@ -81,19 +78,19 @@ class BottomBarButtons extends StatelessWidget {
                     color: primaryColor,
                     fontWeight: FontWeight.w700,
                     fontFamily: "Cairo",
-                    fontSize: 14,
+                    fontSize: 14.sp,
                   ),
                 ),
                 style: OutlinedButton.styleFrom(
                   backgroundColor: primaryColor.withOpacity(0.08),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(12.r),
                   ),
                   side: BorderSide(
                     color: primaryColor,
-                    width: 1.5,
+                    width: 1.5.w,
                   ),
                 ),
               ),

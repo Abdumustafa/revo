@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:revo/core/theaming/colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
@@ -15,7 +16,7 @@ class PrimaryButton extends StatelessWidget {
     super.key,
     required this.text,
     required this.onPressed,
-    this.color = Colors.blueAccent,
+    this.color = ColorsManager.mainColor,
     this.textColor = Colors.white,
     this.borderRadius = 14,
     this.height = 50,

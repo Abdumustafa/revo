@@ -4,14 +4,12 @@ import 'package:revo/core/theaming/styles.dart';
 class DescriptionProperty extends StatefulWidget {
   final String text;
   final int maxLines;
-  final TextStyle? style;
   final String mainTitle;
 
   const DescriptionProperty({
     super.key,
     required this.text,
     this.maxLines = 2,
-    this.style,
     required this.mainTitle,
   });
 
@@ -31,7 +29,7 @@ class _DescriptionPropertyState extends State<DescriptionProperty> {
             text: widget.text,
             style: TextStyles.font16GreymediumCairo,
           ),
-          textDirection: TextDirection.ltr,
+          textDirection: TextDirection.rtl,
           maxLines: widget.maxLines,
         )..layout(maxWidth: constraints.maxWidth);
 
@@ -43,28 +41,21 @@ class _DescriptionPropertyState extends State<DescriptionProperty> {
             Text(
               widget.mainTitle,
               textAlign: TextAlign.right,
-              textDirection: TextDirection.rtl,
               style: TextStyles.font18BlackBoldCairo,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               widget.text,
               maxLines: _expanded ? null : widget.maxLines,
-              overflow: TextOverflow.fade,
+              overflow:
+                  _expanded ? TextOverflow.visible : TextOverflow.ellipsis,
               textAlign: TextAlign.right,
+              style: TextStyles.font16GreymediumCairo,
               textDirection: TextDirection.rtl,
-              style: TextStyles.font16GreymediumCairo,
-            ),
-            Text(
-              widget.text,
-              maxLines: _expanded ? null : widget.maxLines,
-              overflow: TextOverflow.fade,
-              style: TextStyles.font16GreymediumCairo,
-              textAlign: TextAlign.right,
             ),
             if (isOverflowing)
               Align(
-                alignment: Alignment.bottomLeft,
+                alignment: Alignment.centerRight,
                 child: GestureDetector(
                   onTap: () => setState(() => _expanded = !_expanded),
                   child: Text(

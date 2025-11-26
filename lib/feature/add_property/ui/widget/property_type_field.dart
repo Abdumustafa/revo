@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:revo/core/theaming/colors.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/core/theaming/styles.dart';
+import 'package:revo/core/widget/text_feild_app.dart';
 
 class PropertyTypeField extends StatelessWidget {
   const PropertyTypeField({
@@ -8,38 +9,41 @@ class PropertyTypeField extends StatelessWidget {
     required this.title,
     required this.hintText,
     this.controller,
+    this.minLines,
+    this.maxLines,
+    this.keyboardType,
+    this.isPassword = false,
   });
 
   final String title;
   final String hintText;
   final TextEditingController? controller;
+  final int? minLines;
+  final int? maxLines;
+  final TextInputType? keyboardType;
+  final bool isPassword;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 10.0),
+      padding: EdgeInsets.only(top: 10.h),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyles.font18mainColorboldCairo),
-          Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8.0),
-              color: Colors.grey[200],
+          Text(
+            title,
+            style: TextStyles.font18mainColorboldCairo.copyWith(
+              fontSize: 18.sp,
             ),
-            height: 50,
-            margin: const EdgeInsets.only(top: 8.0),
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
-            child: TextField(
-              style: const TextStyle(fontFamily: "Cairo"),
-              controller: controller,
-              decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: hintText,
-                hintStyle:
-                    const TextStyle(color: Colors.grey, fontFamily: "Cairo"),
-              ),
-            ),
+          ),
+          SizedBox(height: 6.h),
+          TextFieldApp(
+            hintText: hintText,
+            controller: controller,
+            minLines: minLines,
+            maxLines: maxLines,
+            keyboardType: keyboardType,
+            isPassword: isPassword,
           ),
         ],
       ),

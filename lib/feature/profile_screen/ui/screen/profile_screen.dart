@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/feature/profile_screen/ui/widget/body_componant.dart';
 import 'package:revo/feature/profile_screen/ui/widget/image_profile.dart';
 import 'package:revo/feature/profile_screen/ui/widget/profile_details_and_features.dart';
@@ -13,7 +14,7 @@ class ProfileScreen extends StatelessWidget {
       body: Stack(
         children: [
           SizedBox(
-            height: 280,
+            height: 280.h,
             width: double.infinity,
             child: Image.asset(
               "assets/image/city.png",
@@ -21,7 +22,7 @@ class ProfileScreen extends StatelessWidget {
             ),
           ),
           Container(
-            height: 330,
+            height: 330.h,
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 begin: Alignment.topCenter,

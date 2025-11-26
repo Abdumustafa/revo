@@ -49,81 +49,82 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Stack(
-        children: [
-          PageView.builder(
-            controller: _pageController,
-            itemCount: widget.images.length,
-            onPageChanged: (index) {
-              setState(() => _currentPage = index);
-            },
-            itemBuilder: (context, index) {
-              return ClipRRect(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                child: Image.asset(
+    final width = MediaQuery.of(context).size.width;
+    final height = width * 0.8;
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(12),
+      child: SizedBox(
+        height: height,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            PageView.builder(
+              controller: _pageController,
+              itemCount: widget.images.length,
+              onPageChanged: (index) {
+                setState(() => _currentPage = index);
+              },
+              itemBuilder: (context, index) {
+                return Image.asset(
                   widget.images[index],
                   fit: BoxFit.cover,
                   width: double.infinity,
-                ),
-              );
-            },
-          ),
-          Positioned(
-            top: 50,
-            right: 12,
-            left: 12,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildIconButton(
-                  icon: Icons.arrow_back_ios_rounded,
-                  onTap: () => Navigator.pop(context),
-                ),
-                Row(
-                  children: [
-                    _buildIconButton(
-                      icon: Icons.flag_outlined,
-                      onTap: () => debugPrint('Report clicked'),
-                    ),
-                    const SizedBox(width: 8),
-                    _buildIconButton(
-                      icon: Icons.share_outlined,
-                      onTap: () => debugPrint('Share clicked'),
-                    ),
-                  ],
-                ),
-              ],
+                );
+              },
             ),
-          ),
-          Positioned(
-            bottom: 12,
-            left: 0,
-            right: 0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                widget.images.length,
-                (index) => AnimatedContainer(
-                  duration: const Duration(milliseconds: 300),
-                  margin: const EdgeInsets.symmetric(horizontal: 3),
-                  width: _currentPage == index ? 22 : 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: _currentPage == index
-                        ? ColorsManager.mainColor
-                        : Colors.white.withOpacity(0.5),
-                    borderRadius: BorderRadius.circular(10),
+            Positioned(
+              top: height * 0.14,
+              right: 12,
+              left: 12,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildIconButton(
+                    icon: Icons.arrow_back_ios_rounded,
+                    onTap: () => Navigator.pop(context),
+                  ),
+                  Row(
+                    children: [
+                      _buildIconButton(
+                        icon: Icons.flag_outlined,
+                        onTap: () => debugPrint('Report clicked'),
+                      ),
+                      SizedBox(width: width * 0.02),
+                      _buildIconButton(
+                        icon: Icons.share_outlined,
+                        onTap: () => debugPrint('Share clicked'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            Positioned(
+              bottom: height * 0.03,
+              left: 0,
+              right: 0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  widget.images.length,
+                  (index) => AnimatedContainer(
+                    duration: const Duration(milliseconds: 300),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.005),
+                    width: _currentPage == index ? width * 0.055 : width * 0.02,
+                    height: width * 0.02,
+                    decoration: BoxDecoration(
+                      color: _currentPage == index
+                          ? ColorsManager.mainColor
+                          : Colors.white.withOpacity(0.5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -136,7 +137,7 @@ class _ImageCarouselCardState extends State<ImageCarouselCard> {
       onTap: onTap,
       borderRadius: BorderRadius.circular(50),
       child: Container(
-        padding: const EdgeInsets.all(8),
+        padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.3),
           shape: BoxShape.circle,

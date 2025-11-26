@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:revo/core/theaming/colors.dart';
 import 'package:revo/core/theaming/styles.dart';
 
@@ -54,9 +55,9 @@ class _AmenitiesListState extends State<AmenitiesList> {
             "المرافق",
             textAlign: TextAlign.right,
             textDirection: TextDirection.rtl,
-            style: TextStyles.font18BlackBoldCairo,
+            style: TextStyles.font18BlackBoldCairo.copyWith(fontSize: 18.sp),
           ),
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           ListView.builder(
             itemCount: _amenities.length,
             shrinkWrap: true,
@@ -64,16 +65,17 @@ class _AmenitiesListState extends State<AmenitiesList> {
             itemBuilder: (context, index) {
               final item = _amenities[index];
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 4),
+                padding: EdgeInsets.symmetric(vertical: 4.h),
                 child: Row(
                   children: [
-                    Icon(item.icon, color: ColorsManager.mainColor),
-                    const SizedBox(width: 12),
+                    Icon(item.icon,
+                        color: ColorsManager.mainColor, size: 24.sp),
+                    SizedBox(width: 12.w),
                     Text(
                       item.title,
-                      style: const TextStyle(fontSize: 16, fontFamily: "Cairo"),
+                      style: TextStyle(fontSize: 16.sp, fontFamily: "Cairo"),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     Text(
                       item.isAvailable ? 'نعم' : 'لا',
                       style: TextStyle(
@@ -82,6 +84,7 @@ class _AmenitiesListState extends State<AmenitiesList> {
                             : Colors.red,
                         fontWeight: FontWeight.bold,
                         fontFamily: "Cairo",
+                        fontSize: 14.sp,
                       ),
                     ),
                   ],

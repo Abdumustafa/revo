@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:revo/core/theaming/colors.dart';
 import 'package:revo/core/theaming/styles.dart';
@@ -17,13 +18,9 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
   bool _isPicking = false;
 
   Future<void> _pickImages() async {
-    if (_isPicking) {
-      return;
-    }
+    if (_isPicking) return;
 
-    setState(() {
-      _isPicking = true;
-    });
+    setState(() => _isPicking = true);
 
     try {
       final List<XFile>? selectedImages = await _picker.pickMultiImage();
@@ -41,9 +38,7 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
             ),
           );
         } else {
-          setState(() {
-            _images.addAll(selectedImages);
-          });
+          setState(() => _images.addAll(selectedImages));
         }
       }
     } catch (e) {
@@ -59,18 +54,12 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
         ),
       );
     } finally {
-      if (mounted) {
-        setState(() {
-          _isPicking = false;
-        });
-      }
+      if (mounted) setState(() => _isPicking = false);
     }
   }
 
   void _removeImage(int index) {
-    setState(() {
-      _images.removeAt(index);
-    });
+    setState(() => _images.removeAt(index));
   }
 
   @override
@@ -82,12 +71,11 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
           'أضف صور للعقار',
           style: TextStyles.font18mainColorboldCairo,
         ),
-        const SizedBox(height: 10),
+        SizedBox(height: 10.h),
 
-        // مؤشر التحميل
         if (_isPicking)
           Container(
-            child: const LinearProgressIndicator(
+            child: LinearProgressIndicator(
               backgroundColor: ColorsManager.mainColor,
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
@@ -100,16 +88,15 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
             child: AnimatedContainer(
               duration: const Duration(milliseconds: 300),
               width: double.infinity,
-              height: 150,
+              height: 150.h,
               decoration: BoxDecoration(
                 color: _isPicking
                     ? Colors.grey.shade300
                     : const Color.fromARGB(255, 255, 255, 255),
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.r),
                 border: Border.all(
                   color: _isPicking ? Colors.grey : ColorsManager.mainColor,
-                  style: BorderStyle.solid,
-                  width: 1.5,
+                  width: 1.5.w,
                 ),
               ),
               child: _images.isEmpty
@@ -123,9 +110,9 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                           color: _isPicking
                               ? Colors.grey
                               : ColorsManager.mainColor,
-                          size: 40,
+                          size: 40.sp,
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         Text(
                           _isPicking
                               ? 'جاري تحميل الصور...'
@@ -135,29 +122,30 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                             color: _isPicking
                                 ? Colors.grey
                                 : ColorsManager.mainColor,
+                            fontSize: 14.sp,
                           ),
                         ),
-                        const SizedBox(height: 5),
+                        SizedBox(height: 5.h),
                         Text(
                           'أضف حتى 10 صور',
                           style: TextStyle(
                             fontFamily: "Cairo",
                             color: _isPicking ? Colors.grey : Colors.grey,
-                            fontSize: 12,
+                            fontSize: 12.sp,
                           ),
                         ),
                       ],
                     )
                   : Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(8.w),
                       child: GridView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
+                            SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
-                          crossAxisSpacing: 8,
-                          mainAxisSpacing: 8,
+                          crossAxisSpacing: 8.w,
+                          mainAxisSpacing: 8.h,
                         ),
                         itemCount: _images.length,
                         itemBuilder: (context, index) {
@@ -165,7 +153,7 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                             alignment: Alignment.topRight,
                             children: [
                               ClipRRect(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.circular(8.r),
                                 child: Image.file(
                                   File(_images[index].path),
                                   fit: BoxFit.cover,
@@ -174,42 +162,42 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
                                   errorBuilder: (context, error, stackTrace) {
                                     return Container(
                                       color: Colors.grey.shade200,
-                                      child: const Icon(Icons.error_outline),
+                                      child: Icon(Icons.error_outline,
+                                          size: 24.sp),
                                     );
                                   },
                                 ),
                               ),
                               Positioned(
-                                top: 2,
-                                right: 2,
+                                top: 2.h,
+                                right: 2.w,
                                 child: GestureDetector(
                                   onTap: () => _removeImage(index),
                                   child: Container(
-                                    decoration: const BoxDecoration(
+                                    decoration: BoxDecoration(
                                       color: Colors.black54,
                                       shape: BoxShape.circle,
                                     ),
-                                    padding: const EdgeInsets.all(2),
-                                    child: const Icon(
+                                    padding: EdgeInsets.all(2.r),
+                                    child: Icon(
                                       Icons.close,
                                       color: Colors.white,
-                                      size: 16,
+                                      size: 16.sp,
                                     ),
                                   ),
                                 ),
                               ),
-                              // رقم الصورة
                               Positioned(
-                                bottom: 2,
-                                left: 2,
+                                bottom: 2.h,
+                                left: 2.w,
                                 child: Container(
-                                  padding: const EdgeInsets.symmetric(
-                                    horizontal: 4,
-                                    vertical: 2,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 4.w,
+                                    vertical: 2.h,
                                   ),
                                   decoration: BoxDecoration(
                                     color: Colors.black54,
-                                    borderRadius: BorderRadius.circular(4),
+                                    borderRadius: BorderRadius.circular(4.r),
                                   ),
                                   child: Text(
                                     '${index + 1}',
@@ -226,15 +214,15 @@ class _AddPropertyImagesState extends State<AddPropertyImages> {
           ),
         ),
 
-        // عداد الصور
         if (_images.isNotEmpty) ...[
-          const SizedBox(height: 8),
+          SizedBox(height: 8.h),
           Text(
             'عدد الصور: ${_images.length}/10',
             style: TextStyle(
               fontFamily: "Cairo",
               color: _images.length == 10 ? Colors.red : Colors.green,
               fontWeight: FontWeight.bold,
+              fontSize: 14.sp,
             ),
           ),
         ],
